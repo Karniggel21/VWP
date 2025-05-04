@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lernmodul: Wahrnehmung</title>
+    <style>
+        /* Grundlegende Stile (ähnlich wie zuvor) */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 25px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6f42c1, #4a148c); /* Lila Gradient */
+            color: #ffffff;
+            padding: 25px 30px;
+            border-radius: 10px 10px 0 0;
+            margin: -30px -30px 35px -30px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: 600;
+        }
+
+        h2 {
+            color: #4a148c; /* Dunkles Lila */
+            border-bottom: 3px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-top: 45px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #6f42c1; /* Helleres Lila */
+            margin-top: 30px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+        h4 {
+           color: #343a40;
+           font-size: 1.15em;
+           margin-bottom: 8px;
+           font-weight: 600;
+        }
+
+        strong {
+            color: #4a148c;
+            font-weight: 700;
+        }
+
+        /* Platzhalter für Grafiken */
+        .placeholder {
+            border: 2px dashed #ced4da;
+            padding: 35px;
+            text-align: center;
+            margin: 30px 0;
+            background-color: #f1f3f5;
+            color: #6c757d;
+            font-style: italic;
+            border-radius: 6px;
+        }
+
+        /* Wahrnehmungsprozess Visualisierung */
+        .wahrnehmung-prozess {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px; /* Mehr Abstand */
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #f1f3f5; /* Hintergrund für den Prozess */
+            border-radius: 8px;
+            align-items: center; /* Vertikal zentrieren */
+             justify-content: center;
+        }
+        .prozess-step {
+            background-color: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            text-align: center;
+             border: 1px solid #ced4da;
+            position: relative;
+        }
+        .prozess-arrow {
+             font-size: 1.5em;
+             color: #6c757d;
+             font-weight: bold;
+             padding: 0 5px;
+         }
+         /* Flaschenhals Visualisierung (vereinfacht) */
+         .flaschenhals-visual {
+            text-align: center;
+            padding: 15px;
+            margin: 15px auto;
+            max-width: 300px;
+         }
+          .flaschenhals-visual span {
+              display: block; /* Eigene Zeile */
+              font-size: 2em;
+              line-height: 1;
+          }
+          .flaschenhals-visual .oben { color: #6c757d; } /* Viele Reize */
+          .flaschenhals-visual .mitte { color: #4a148c; font-weight: bold; } /* Engpass */
+          .flaschenhals-visual .unten { color: #6f42c1; } /* Wenige ausgewählte */
+
+
+        /* Soziale Wahrnehmungsphänomene */
+        .phenomenon-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive Karten */
+            gap: 20px;
+            margin-top: 25px;
+        }
+        .phenomenon-card {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.07);
+            border-left: 5px solid #6f42c1; /* Lila Akzent */
+        }
+        .phenomenon-card h4 {
+            margin-top: 0;
+            color: #4a148c;
+        }
+        .phenomenon-card p {
+            font-size: 0.95em;
+            color: #495057;
+            margin: 0;
+        }
+        /* Speziell für Stereotyp/Vorurteil */
+        .stereotype-prejudice-relation {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #4a148c;
+        }
+
+
+        /* Selbsterfüllende Prophezeiung - Zyklus */
+        .sfp-cycle {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+            padding: 15px;
+            background-color: #f1f3f5;
+            border-radius: 8px;
+             position: relative; /* Für Pfeile (optional, kann komplex werden) */
+        }
+        .sfp-step {
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+         .sfp-step .step-number {
+             display: block;
+             font-weight: bold;
+             color: #6f42c1;
+             margin-bottom: 8px;
+             font-size: 1.1em;
+         }
+         .sfp-step p { margin: 0; font-size: 0.95em; }
+         /* Pfeile (optional, hier als Text angedeutet) */
+         .sfp-cycle::after { /* Simpler Hinweis auf Zyklus */
+            content: 'Kreislauf →';
+            display: block; /* Sicherstellen, dass es unter dem Grid erscheint */
+            text-align: center;
+            margin-top: 10px;
+            color: #6c757d;
+            font-weight: bold;
+            grid-column: 1 / -1; /* Spannt über alle Grid-Spalten */
+         }
+
+
+        /* Quiz-Stile (allgemein, wie gehabt) */
+        .quiz-section { background-color: #f1f3f5; padding: 25px; margin-top: 35px; border-radius: 8px; border: 1px solid #dee2e6; }
+        .quiz-section h3 { margin-top: 0; border-bottom: 1px solid #ced4da; padding-bottom: 10px; margin-bottom: 20px; color: #4a148c; }
+        .quiz-question { margin-bottom: 20px; padding: 15px; background-color: #fff; border-radius: 5px; border: 1px solid #e0e0e0; }
+        .quiz-question p { font-weight: bold; margin-bottom: 10px; }
+        .quiz-question label { display: block; margin-bottom: 8px; cursor: pointer; padding: 8px 12px; border-radius: 4px; transition: background-color 0.2s ease; border: 1px solid transparent; }
+        .quiz-question label:hover { background-color: #e9ecef; }
+        .quiz-question input[type="radio"] { margin-right: 10px; vertical-align: middle; }
+        .quiz-submit { display: inline-block; padding: 12px 25px; font-size: 1em; color: #ffffff; background-color: #5cb85c; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; margin-top: 10px; } /* Grüner Button */
+        .quiz-submit:hover { background-color: #4cae4c; }
+        .quiz-feedback { margin-top: 20px; padding: 15px; border-radius: 5px; font-weight: bold; display: none; border: 1px solid transparent; }
+        .quiz-feedback.correct { background-color: #dff0d8; color: #3c763d; border-color: #d6e9c6; } /* Bootstrap Success Farben */
+        .quiz-feedback.incorrect { background-color: #f2dede; color: #a94442; border-color: #ebccd1; } /* Bootstrap Danger Farben */
+        .correct-answer { background-color: #dff0d8 !important; border: 1px solid #d6e9c6; border-left: 5px solid #3c763d !important; padding-left: 8px !important; }
+        .incorrect-answer { background-color: #f2dede !important; border: 1px solid #ebccd1; border-left: 5px solid #a94442 !important; padding-left: 8px !important; }
+        .user-selected { /* Optional */ }
+        .unanswered-question { border: 1px solid #a94442 !important; }
+
+
+        /* Übungs-Sektionen */
+        .exercise-section { background-color: #fcf8e3; padding: 25px; margin-top: 35px; border-radius: 8px; border: 1px solid #faebcc; } /* Bootstrap Warning Farben */
+        .exercise-section h3 { margin-top: 0; color: #8a6d3b; }
+        .exercise-section ul, .exercise-section ol { list-style: disc; margin-left: 20px; }
+
+
+        /* Checkliste & Zusammenfassung */
+        .summary-section, .checklist-section { background-color: #d9edf7; padding: 25px; margin-top: 35px; border-radius: 8px; border: 1px solid #bce8f1; } /* Bootstrap Info Farben */
+        .summary-section h2, .checklist-section h2 { margin-top: 0; color: #31708f; }
+        .checklist-section ul { list-style: none; padding-left: 0; }
+        .checklist-section li { margin-bottom: 15px; }
+        .checklist-section h4 { margin-bottom: 5px; color: #31708f; }
+        .checklist-section ul ul { list-style: disc; padding-left: 25px; margin-top: 5px; }
+        .checklist-section ul ul li { margin-bottom: 3px; font-size: 0.95em;}
+
+        /* Responsive Design Anpassungen */
+        @media (max-width: 768px) {
+            .wahrnehmung-prozess { flex-direction: column; align-items: stretch; } /* Schritte untereinander */
+            .prozess-arrow { display: none; } /* Pfeile ausblenden */
+             .prozess-step { margin-bottom: 10px; }
+             .phenomenon-list { grid-template-columns: 1fr; } /* Karten untereinander */
+             .sfp-cycle { grid-template-columns: 1fr; } /* Schritte untereinander */
+        }
+        @media (max-width: 600px) {
+            .container { padding: 20px; margin: 15px auto; }
+            header { padding: 20px; margin: -20px -20px 25px -20px; }
+            header h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.25em; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Lernmodul: Wahrnehmung & Soziale Urteilsbildung</h1>
+        </header>
+
+        <main>
+            <section id="grundlagen-wahrnehmung">
+                <h2>1. Grundlagen der Wahrnehmung</h2>
+                <p><strong>Wahrnehmung</strong> ist der Prozess, wie wir Informationen aus unserer Umwelt aufnehmen, organisieren und interpretieren, um ihnen eine Bedeutung zu geben. Es ist keine passive Kopie der Realität, sondern eine <strong>aktive Konstruktion</strong>.</p>
+
+                <h3>Der Wahrnehmungsprozess (grob):</h3>
+                <div class="wahrnehmung-prozess">
+                    <div class="prozess-step">Reiz (Umwelt)</div>
+                    <div class="prozess-arrow">→</div>
+                    <div class="prozess-step">Aufnahme (Sinne)</div>
+                    <div class="prozess-arrow">→</div>
+                    <div class="prozess-step"><strong>Selektion</strong> (Aufmerksamkeit)</div>
+                    <div class="prozess-arrow">→</div>
+                    <div class="prozess-step">Organisation & Elaboration (Gehirn)</div>
+                    <div class="prozess-arrow">→</div>
+                    <div class="prozess-step">Interpretation (Bedeutung)</div>
+                    <div class="prozess-arrow">→</div>
+                    <div class="prozess-step">Verhalten</div>
+                </div>
+                 <p>Besonders wichtig ist die <strong>Selektion (Aufmerksamkeit)</strong>: Wir können nicht alle Reize verarbeiten. Unsere Aufmerksamkeit wirkt wie ein <strong>Flaschenhals</strong> und filtert (bewusst und unbewusst), was relevant erscheint.</p>
+                <div class="flaschenhals-visual">
+                     <span class="oben">Viele Reize</span>
+                     <span class="mitte">▼</span> <span class="unten">Auswahl</span>
+                 </div>
+                 <p>Die <strong>Organisation & Elaboration</strong> im Gehirn beinhaltet das Ordnen, Verknüpfen mit Wissen/Erfahrungen und das Ergänzen fehlender Informationen (vgl. Beispiele Dalmatiner, unvollständige Kreise).</p>
+                 <p>Die <strong>Interpretation</strong> ist schließlich die subjektive Bedeutungszuschreibung, beeinflusst durch individuelle Faktoren (Erfahrung, Wissen, Bedürfnisse, Erwartungen, Stimmung etc.).</p>
+                 <p><strong>Fazit:</strong> Unsere Wahrnehmung ist <strong>selektiv</strong> und <strong>subjektiv</strong>. Wir konstruieren unsere Realität.</p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; margin-bottom: 20px;">
+    <img src="bilder/Screenshot 2025-04-30 213203.png"
+         alt="Infografik zum Wahrnehmungsprozess: Zeigt die Schritte von 'Reiz' über 'Aufnahme', 'Verarbeitung', 'Schlussfolgerungen' bis 'Verhalten'."
+         style="max-width: 48%; height: auto; margin: 5px;">
+
+    <img src="bilder/Screenshot 2025-04-30 213216.png"
+         alt="Infografik zum Flaschenhalsmodell der Wahrnehmung: Zeigt wie Reize durch Sinnesorgane aufgenommen, durch Aufmerksamkeit gefiltert und zu Reaktionen verarbeitet werden."
+         style="max-width: 48%; height: auto; margin: 5px;">
+</div>
+            </section>
+
+            <section class="quiz-section">
+                 <h3>Interaktives Quiz: Grundlagen der Wahrnehmung</h3>
+                 <form id="wahrnehmung-quiz">
+                    <div class="quiz-question">
+                        <p>1. Was ist Wahrnehmung laut Definition ?</p>
+                        <label><input type="radio" name="wq1" value="a"> a) Nur das Sehen von Objekten.</label>
+                        <label><input type="radio" name="wq1" value="b"> b) Der Prozess, Informationen aufzunehmen und passiv zu speichern.</label>
+                        <label><input type="radio" name="wq1" value="c"> c) Der Prozess, Informationen zu organisieren und zu interpretieren.</label>
+                        <label><input type="radio" name="wq1" value="d"> d) Nur die Reaktion auf einen Reiz.</label>
+                    </div>
+                    <div class="quiz-question">
+                        <p>2. Warum ist Wahrnehmung selektiv?</p>
+                        <label><input type="radio" name="wq2" value="a"> a) Weil unsere Sinnesorgane nicht gut genug sind.</label>
+                        <label><input type="radio" name="wq2" value="b"> b) Weil wir nicht alle verfügbaren Reize gleichzeitig verarbeiten können und unsere Aufmerksamkeit filtert.</label>
+                        <label><input type="radio" name="wq2" value="c"> c) Weil alle Reize gleich wichtig sind.</label>
+                        <label><input type="radio" name="wq2" value="d"> d) Weil das Gehirn keine Informationen verarbeiten kann.</label>
+                    </div>
+                    <div class="quiz-question">
+                        <p>3. Was beeinflusst laut dem Flaschenhalsmodell unsere Interpretation von Reizen?</p>
+                        <label><input type="radio" name="wq3" value="a"> a) Nur die physikalische Beschaffenheit des Reizes.</label>
+                        <label><input type="radio" name="wq3" value="b"> b) Nur unsere Augen und Ohren.</label>
+                        <label><input type="radio" name="wq3" value="c"> c) Unsere Stimmung, Bedürfnisse, Erfahrungen, Wissen, Einstellungen und Erwartungen.</label>
+                        <label><input type="radio" name="wq3" value="d"> d) Das Wetter.</label>
+                    </div>
+                     <button type="submit" class="quiz-submit">Quiz auswerten</button>
+                     <div id="wahrnehmung-feedback" class="quiz-feedback"></div>
+                 </form>
+            </section>
+
+            <section class="exercise-section">
+                <h3>Übung zur Anwendung: Subjektivität der Wahrnehmung</h3>
+                <p>Denke an Bilder mit Kippfiguren oder versteckten Objekten (wie das Beispiel mit dem Dalmatiner, das manchmal nur als Fleckenmuster wahrgenommen wird):</p>
+                <ul>
+                    <li>Hast du solche Bilder schon einmal gesehen? Was hast du zuerst erkannt?</li>
+                    <li>Wenn du weißt, was "eigentlich" zu sehen ist: Fällt es schwer, das Bild danach wieder "neutral" (ohne das Objekt) zu sehen?</li>
+                    <li>Diskutiere mit anderen: Warum könnten manche Personen das Objekt sofort erkennen und andere nicht? (Vorerfahrung, Erwartung, Konzentration...)</li>
+                </ul>
+                 <img src="bilder/Screenshot 2025-04-30 214031.png"
+     alt="Optische Täuschung / Gestaltwahrnehmung: Ein Dalmatiner ist nur schwer in einem Muster aus schwarzen Flecken auf weißem Grund zu erkennen."
+     style="max-width: 100%; height: auto; display: block; margin: 20px auto;">
+            </section>
+
+            <section id="soziale-wahrnehmung">
+                <h2>2. Soziale Wahrnehmung und Wahrnehmungsphänomene</h2>
+                <p><strong>Soziale Wahrnehmung</strong> fokussiert darauf, wie wir andere Menschen wahrnehmen, uns einen Eindruck von ihnen bilden und ihr Verhalten erklären. Dabei kommt es oft zu systematischen Verzerrungen:</p>
+                <div class="phenomenon-list">
+                    <div class="phenomenon-card">
+                        <h4>Erster Eindruck (Primacy Effect)</h4>
+                        <p>Die <strong>ersten</strong> Informationen über eine Person prägen den Gesamteindruck überproportional stark und beeinflussen die Deutung späterer Infos.</p>
+                    </div>
+                    <div class="phenomenon-card">
+                        <h4>Letzter Eindruck (Recency Effect / Nikolaus-Effekt)</h4>
+                        <p>Die <strong>letzten/aktuellsten</strong> Informationen bleiben gut haften und können den Eindruck stark beeinflussen (z.B. bei Beurteilungen).</p>
+                        <p><em>(Primacy + Recency = Serieller Positionseffekt)</em></p>
+                    </div>
+                    <div class="phenomenon-card">
+                        <h4>Reihenfolge-/Kontrasteffekt</h4>
+                        <p>Die Beurteilung hängt davon ab, was/wen man <strong>direkt davor</strong> wahrgenommen hat (z.B. durchschnittliche Leistung wirkt nach schlechter besser).</p>
+                    </div>
+                     <div class="phenomenon-card">
+                        <h4>Halo-Effekt (Überstrahlung)</h4>
+                        <p>Eine <strong>einzelne, hervorstechende Eigenschaft</strong> (positiv/negativ) färbt den Gesamteindruck unverhältnismäßig. Bei negativen Merkmalen: Horn-Effekt.</p>
+                    </div>
+                     <div class="phenomenon-card">
+                        <h4>Kategorisierung</h4>
+                        <p>Wir ordnen Menschen schnell in soziale Kategorien ein (Alter, Beruf, etc.), um die Welt zu vereinfachen.</p>
+                    </div>
+                     <div class="phenomenon-card">
+                        <h4>Stereotyp</h4>
+                        <p>Verallgemeinerte <strong>Überzeugung/Vorstellung</strong> über typische Eigenschaften/Verhalten von Gruppenmitgliedern. Kann positiv, negativ oder neutral sein; oft vereinfachend.</p>
+                    </div>
+                    <div class="phenomenon-card">
+                        <h4>Vorurteil</h4>
+                        <p>(Meist negative) <strong>Bewertung/Einstellung</strong> gegenüber einer Gruppe und ihren Mitgliedern, basierend auf Stereotypen. Oft emotional aufgeladen.</p>
+                    </div>
+                </div>
+                 <div class="stereotype-prejudice-relation">
+                     Stereotyp (Überzeugung) → Vorurteil (Bewertung/Einstellung)
+                 </div>
+            </section>
+
+            <section class="quiz-section">
+                 <h3>Interaktives Quiz: Soziale Wahrnehmung</h3>
+                 <form id="sozial-quiz">
+                     <div class="quiz-question">
+                        <p>1. Welcher Effekt beschreibt, dass die zuletzt erhaltene Information einen starken Einfluss auf die Beurteilung hat?</p>
+                        <label><input type="radio" name="sozq1" value="a"> a) Halo-Effekt</label>
+                        <label><input type="radio" name="sozq1" value="b"> b) Primacy Effect (Erster Eindruck)</label>
+                        <label><input type="radio" name="sozq1" value="c"> c) Recency Effect (Nikolaus-Effekt)</label>
+                        <label><input type="radio" name="sozq1" value="d"> d) Kontrasteffekt</label>
+                    </div>
+                    <div class="quiz-question">
+                        <p>2. Du triffst eine neue Kollegin, die sehr attraktiv ist, und schließt daraus automatisch, dass sie auch intelligent und kompetent sein muss. Welcher Effekt liegt hier vor?</p>
+                        <label><input type="radio" name="sozq2" value="a"> a) Recency Effect</label>
+                        <label><input type="radio" name="sozq2" value="b"> b) Kontrasteffekt</label>
+                        <label><input type="radio" name="sozq2" value="c"> c) Stereotypisierung</label>
+                        <label><input type="radio" name="sozq2" value="d"> d) Halo-Effekt</label>
+                    </div>
+                    <div class="quiz-question">
+                        <p>3. Was ist der Hauptunterschied zwischen einem Stereotyp und einem Vorurteil?</p>
+                        <label><input type="radio" name="sozq3" value="a"> a) Stereotype sind immer negativ, Vorurteile immer positiv.</label>
+                        <label><input type="radio" name="sozq3" value="b"> b) Stereotype sind Überzeugungen/Vorstellungen über Gruppen, Vorurteile sind Bewertungen/Einstellungen gegenüber Gruppen.</label>
+                        <label><input type="radio" name="sozq3" value="c"> c) Stereotype beziehen sich nur auf Berufe, Vorurteile nur auf Nationalitäten.</label>
+                        <label><input type="radio" name="sozq3" value="d"> d) Es gibt keinen Unterschied.</label>
+                    </div>
+                     <button type="submit" class="quiz-submit">Quiz auswerten</button>
+                     <div id="sozial-feedback" class="quiz-feedback"></div>
+                 </form>
+            </section>
+
+             <section class="exercise-section">
+                <h3>Übung zur Anwendung: Wahrnehmungsfehler im Alltag</h3>
+                <p>Beobachte dich selbst:</p>
+                <ul>
+                    <li>Wann bildest du dir schnell einen <strong>ersten Eindruck</strong>? Worauf achtest du?</li>
+                    <li>Wann beeinflusst ein Merkmal deine gesamte Einschätzung (<strong>Halo-/Horn-Effekt</strong>)?</li>
+                    <li>Wann schreibst du jemandem aufgrund der Gruppenzugehörigkeit Eigenschaften zu (<strong>Stereotyp</strong>)?</li>
+                </ul>
+                <p>Notiere 1-2 Beispiele und reflektiere: Wie kam die Wahrnehmung zustande? Wird sie der Person gerecht?</p>
+            </section>
+
+             <section id="auswirkungen">
+                <h2>3. Auswirkungen der Wahrnehmung auf das Verhalten</h2>
+                <p>Unsere Wahrnehmung und Erwartungen beeinflussen unser Verhalten – und das kann wiederum das Verhalten anderer beeinflussen, oft so, dass unsere Erwartung bestätigt wird. Dies nennt man <strong>Selbsterfüllende Prophezeiung</strong> (Self-fulfilling Prophecy).</p>
+                <h3>Der Kreislauf der Selbsterfüllenden Prophezeiung:</h3>
+                <div class="sfp-cycle">
+                    <div class="sfp-step">
+                        <span class="step-number">1. Erwartung</span>
+                        <p>Deine (oft unbewusste) Annahme über eine Person (z.B. "ist unsicher").</p>
+                    </div>
+                     <div class="sfp-step">
+                        <span class="step-number">2. Eigenes Verhalten</span>
+                        <p>Du verhältst dich entsprechend deiner Erwartung (z.B. kritischer, weniger unterstützend).</p>
+                    </div>
+                     <div class="sfp-step">
+                        <span class="step-number">3. Verhalten der anderen Person</span>
+                        <p>Die Person reagiert auf <strong>dein</strong> Verhalten (z.B. wird tatsächlich unsicher).</p>
+                    </div>
+                     <div class="sfp-step">
+                        <span class="step-number">4. Bestätigung</span>
+                        <p>Das Verhalten der Person scheint deine ursprüngliche Erwartung zu bestätigen.</p>
+                    </div>
+                </div>
+                <p>Ein bekanntes Beispiel ist der <strong>Rosenthal-Effekt</strong> (Pygmalion-Effekt), bei dem positive Erwartungen von Lehrkräften die Schülerleistung verbesserten.</p>
+                <img src="bilder/Screenshot 2025-04-30 214338.png"
+     alt="Grafik zum Kreislauf der Selbsterfüllenden Prophezeiung (SFP): Vier Schritte im Kreis mit Pfeilen und Strichmännchen - 1. Verhalten wird erwartet, 2. Eigenes Verhalten wird angepasst, 3. Verhalten der anderen passt sich an, 4. Erwartung bestätigt."
+     style="max-width: 60%; height: auto; display: block; margin: 20px auto;">
+            </section>
+
+             <section class="quiz-section">
+                 <h3>Interaktives Quiz: Auswirkungen der Wahrnehmung</h3>
+                 <form id="auswirkung-quiz">
+                    <div class="quiz-question">
+                        <p>1. Was ist eine selbsterfüllende Prophezeiung?</p>
+                        <label><input type="radio" name="aq1" value="a"> a) Eine Vorhersage, die immer falsch ist.</label>
+                        <label><input type="radio" name="aq1" value="b"> b) Eine Erwartung, die dazu führt, dass sich die Person, auf die sie sich bezieht, entsprechend dieser Erwartung verhält, weil man sich selbst anders ihr gegenüber verhält.</label>
+                        <label><input type="radio" name="aq1" value="c"> c) Das Phänomen, dass man sich nur an das erinnert, was man erwartet hat.</label>
+                        <label><input type="radio" name="aq1" value="d"> d) Eine bewusste Manipulation des Verhaltens anderer.</label>
+                    </div>
+                    <div class="quiz-question">
+                        <p>2. Welcher Schritt im Kreislauf der selbsterfüllenden Prophezeiung ist entscheidend dafür, dass die Erwartung Realität wird?</p>
+                        <label><input type="radio" name="aq2" value="a"> a) Nur die ursprüngliche Erwartung.</label>
+                        <label><input type="radio" name="aq2" value="b"> b) Nur das Verhalten der other Person.</label>
+                        <label><input type="radio" name="aq2" value="c"> c) Das eigene Verhalten, das durch die Erwartung ausgelöst wird und das Verhalten des anderen beeinflusst.</label>
+                        <label><input type="radio" name="aq2" value="d"> d) Die zufällige Bestätigung der Erwartung.</label>
+                    </div>
+                     <button type="submit" class="quiz-submit">Quiz auswerten</button>
+                     <div id="auswirkung-feedback" class="quiz-feedback"></div>
+                 </form>
+            </section>
+
+            <section class="exercise-section">
+                <h3>Übung zur Anwendung: Selbsterfüllende Prophezeiung durchbrechen</h3>
+                <p>Denke an eine Situation mit einer (negativen) Erwartung an eine Person/Gruppe:</p>
+                <ul>
+                    <li>Wie hat die Erwartung dein Verhalten beeinflusst?</li>
+                    <li>Wie hat die Person/Gruppe reagiert? Wurde die Erwartung bestätigt?</li>
+                    <li>Was hättest du anders machen können? Wie, wenn du bewusst offener oder entgegen deiner Erwartung gehandelt hättest?</li>
+                </ul>
+            </section>
+
+             <section class="checklist-section">
+                <h2>Checkliste: Was du wissen solltest</h2>
+                 <ul>
+                    <li><h4>Grundlagen Wahrnehmung:</h4><ul><li>Definition: Aktiver Interpretationsprozess.</li><li>Schritte des Wahrnehmungsprozesses.</li><li>Selektivität & Subjektivität.</li><li>Aufmerksamkeitsfilter (Flaschenhals).</li></ul></li>
+                     <li><h4>Soziale Wahrnehmung:</h4><ul><li>Definition: Wahrnehmung anderer Personen.</li><li>Wichtige Phänomene: Primacy-, Recency-, Kontrasteffekt, Halo-/Horn-Effekt.</li><li>Unterschied Stereotyp vs. Vorurteil.</li></ul></li>
+                     <li><h4>Auswirkungen:</h4><ul><li>Konzept der Selbsterfüllenden Prophezeiung (SFP) und ihr Kreislauf.</li><li>Einfluss von Wahrnehmung/Erwartungen auf eigenes & fremdes Verhalten.</li></ul></li>
+                 </ul>
+            </section>
+
+             <section class="summary-section">
+                <h2>Zusammenfassung der Themen</h2>
+                <p><strong>Wahrnehmung</strong> ist ein aktiver, selektiver und subjektiver Prozess der Organisation und Interpretation von Sinnesreizen. <strong>Soziale Wahrnehmung</strong> befasst sich mit der Wahrnehmung anderer Menschen, die anfällig für Verzerrungen wie Primacy-/Recency-Effekt, Kontrast-Effekt, Halo-Effekt sowie Stereotypisierung und Vorurteilsbildung ist. Diese Wahrnehmungen beeinflussen unser Verhalten und können über eine <strong>Selbsterfüllende Prophezeiung</strong> dazu führen, dass sich andere entsprechend unserer Erwartungen verhalten. Bewusstsein für diese Prozesse ist der erste Schritt zur Reflexion und Minimierung negativer Auswirkungen.</p>
+            </section>
+
+			<section class="summary-section">
+                <h2>PDF der Präsentation zum Download</h2>
+				<p><a href="pdf/Themengebiet 3.pdf" download>Präsentation Themengebiet 3</a></p>
+			</section
+        </main>
+    </div>
+
+    <script>
+        // === Wiederverwendbare Funktion zur Quiz-Auswertung (wie gehabt) ===
+        function evaluateQuiz(formId, correctAnswers, feedbackElementId) {
+            const quizForm = document.getElementById(formId);
+            const feedbackElement = document.getElementById(feedbackElementId);
+            if (!quizForm || !feedbackElement) { console.error("Quiz-Formular oder Feedback-Element nicht gefunden:", formId, feedbackElementId); return; }
+            if (quizForm.dataset.listenerAttached) { return; }
+            quizForm.dataset.listenerAttached = 'true';
+            quizForm.addEventListener('submit', function(event) {
+                event.preventDefault(); let score = 0; const totalQuestions = Object.keys(correctAnswers).length; const questions = quizForm.querySelectorAll('.quiz-question'); let allAnswered = true;
+                questions.forEach((question) => {
+                    const radioInputs = question.querySelectorAll('input[type="radio"]'); const questionName = radioInputs.length > 0 ? radioInputs[0].name : null; const labels = question.querySelectorAll('label');
+                    labels.forEach(label => { label.classList.remove('correct-answer', 'incorrect-answer', 'user-selected'); label.style.borderLeftWidth = ''; label.style.borderLeftColor = ''; label.style.paddingLeft = ''; label.style.border = ''; });
+                    question.classList.remove('unanswered-question'); if (!questionName) return; const selectedInput = question.querySelector(`input[name="${questionName}"]:checked`);
+                    if (selectedInput) {
+                        const userAnswer = selectedInput.value; const correctAnswer = correctAnswers[questionName]; const selectedLabel = selectedInput.closest('label');
+                        if(selectedLabel) {
+                            selectedLabel.classList.add('user-selected');
+                            if (userAnswer === correctAnswer) { score++; selectedLabel.classList.add('correct-answer'); } else {
+                                selectedLabel.classList.add('incorrect-answer'); const correctInput = question.querySelector(`input[value="${correctAnswer}"]`);
+                                if (correctInput) { const correctLabel = correctInput.closest('label'); if (correctLabel) correctLabel.classList.add('correct-answer'); } } }
+                    } else { allAnswered = false; question.classList.add('unanswered-question'); } });
+                feedbackElement.style.display = 'block'; let feedbackMessage = "";
+                if (!allAnswered) { feedbackMessage = `Bitte beantworte alle Fragen. Deine aktuelle Punktzahl: ${score} von ${totalQuestions}.`; feedbackElement.className = 'quiz-feedback incorrect'; } else {
+                    feedbackMessage = `Dein Ergebnis: ${score} von ${totalQuestions} richtig. `;
+                    if (score === totalQuestions) { feedbackMessage += "Ausgezeichnet!"; feedbackElement.className = 'quiz-feedback correct'; } else if (score >= Math.ceil(totalQuestions / 2)) { feedbackMessage += "Gut gemacht! Schau dir die markierten Antworten nochmal an."; feedbackElement.className = 'quiz-feedback incorrect'; } else { feedbackMessage += "Das war noch nicht ganz richtig. Wiederhole die Inhalte und versuche es erneut."; feedbackElement.className = 'quiz-feedback incorrect'; } }
+                feedbackElement.textContent = feedbackMessage; feedbackElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); }); }
+
+        // === Definitionen der korrekten Antworten ===
+        const correctAnswersWahrnehmung = { wq1: 'c', wq2: 'b', wq3: 'c' };
+        const correctAnswersSozial = { sozq1: 'c', sozq2: 'd', sozq3: 'b' };
+        const correctAnswersAuswirkung = { aq1: 'b', aq2: 'c' };
+
+        // === Event Listener für jedes Quiz hinzufügen ===
+        document.addEventListener('DOMContentLoaded', () => {
+             if (!document.body.dataset.listenersAdded) { // Verhindert doppelte Listener
+                 evaluateQuiz('wahrnehmung-quiz', correctAnswersWahrnehmung, 'wahrnehmung-feedback');
+                 evaluateQuiz('sozial-quiz', correctAnswersSozial, 'sozial-feedback');
+                 evaluateQuiz('auswirkung-quiz', correctAnswersAuswirkung, 'auswirkung-feedback');
+                 document.body.dataset.listenersAdded = 'true';
+             }
+        });
+    </script>
+
+</body>
+</html>
