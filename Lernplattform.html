@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lernplattform Startseite - Modernisiert</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+    /* Allgemeine Stile für den Body */
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f2f5; /* Etwas anderer Hintergrund für Kontrast */
+        color: #495057;
+        line-height: 1.6; /* Leicht reduziert für Kompaktheit */
+    }
+
+    /* Container für den Hauptinhalt */
+    .container {
+        max-width: 1200px; /* Etwas breiter für 3 Spalten */
+        margin: 40px auto; /* Mehr Abstand oben/unten */
+        padding: 40px;    /* Mehr Innenabstand */
+        background-color: #ffffff;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07); /* Deutlicherer, weicher Schatten */
+        border-radius: 16px; /* Stärkere Abrundung */
+    }
+
+    /* Styling für den Header-Bereich */
+    header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    /* Styling für die Hauptüberschrift */
+    header h1 {
+        color: #0056b3;
+        font-weight: 600;
+        font-size: 2.3em; /* Leicht größer */
+    }
+
+    /* Styling für den Einleitungstext */
+    .intro-text {
+        text-align: center;
+        margin-bottom: 40px; /* Angepasster Abstand wegen Fakt */
+        font-size: 1.1em; /* Leicht kleiner */
+        color: #6c757d;
+    }
+
+    /* --- NEU: Styling für den Fakten-Container --- */
+    #fact-container {
+        font-style: italic; /* Passt gut zu Fakten/Zitaten */
+        text-align: center;
+        margin-bottom: 40px; /* Abstand zur Navigation */
+        padding: 20px;
+        background-color: #eef1f5; /* Leicht anderer Hintergrund */
+        border-radius: 8px;
+        border-left: 5px solid #0d6efd; /* Akzentlinie links */
+        color: #495057; /* Passende Textfarbe */
+        min-height: 25px; /* Verhindert Springen beim Laden */
+    }
+    /* --- ENDE NEU --- */
+
+
+    /* --- NEUES LAYOUT & STYLING FÜR NAV/ABTEILUNGEN --- */
+
+    /* Styling für den <nav> Container */
+    nav {
+        display: flex;
+        flex-wrap: wrap; /* Behält Umbruch bei */
+        justify-content: center;
+        align-items: flex-start; /* WICHTIG: Richtet Boxen oben aus */
+        gap: 25px;               /* Abstand zwischen den Abteilungen */
+        margin-bottom: 40px;
+    }
+
+    /* Styling für jede einzelne Abteilung */
+    .link-abteil {
+        flex: 1; /* Behält gleiche Breite bei */
+        padding: 25px; /* Innenabstand für Luft */
+        background-color: #f8f9fa; /* Leichter Hintergrund zur Abhebung */
+        border-radius: 10px;       /* Abgerundete Ecken für die Box */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.06); /* Subtiler Schatten pro Box */
+        min-width: 220px;      /* Mindestbreite anpassen */
+        display: flex; /* Macht Abteilung zum Flex Container */
+        flex-direction: column; /* Inhalt (h2, ul) untereinander */
+    }
+
+    /* Styling für die Überschriften der Abteilungen */
+    .link-abteil h2 {
+        font-size: 1.25em; /* Angepasste Größe */
+        font-weight: 600;
+        color: #0056b3; /* Passend zur Hauptüberschrift */
+        margin: 0 0 20px 0; /* Abstand nach unten */
+        padding-bottom: 10px;
+        border-bottom: 2px solid #0d6efd; /* Akzentlinie */
+        text-align: center;
+    }
+
+    /* Allgemeines Styling für Listen INNHERHALB einer Abteilung */
+    .link-abteil ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column; /* IMMER vertikal */
+        align-items: stretch;   /* Links füllen die Breite */
+        gap: 10px;              /* Vertikaler Abstand */
+        flex-grow: 1; /* Lässt UL wachsen, um Platz zu füllen (falls h2 kurz) */
+    }
+
+    /* Allgemeines Styling für Links */
+    .link-abteil ul li {
+         /* Kein extra Styling für li benötigt bei diesem Layout */
+    }
+
+    .link-abteil ul li a {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Inhalt IMMER zentrieren */
+        text-align: center;      /* Text IMMER zentrieren */
+        gap: 12px; /* Etwas mehr Platz Icon <> Text */
+        background-color: #0d6efd;
+        color: #ffffff;
+        padding: 12px 15px; /* Angepasstes Padding */
+        text-decoration: none;
+        border-radius: 6px;
+        transition: all 0.25s ease; /* Sanftere Transition */
+        font-weight: 500; /* Etwas leichter */
+        border: 1px solid transparent; /* Platz für Hover-Border */
+    }
+
+    /* Icon Styling */
+    .link-abteil ul li a i {
+        font-size: 1em; /* Ggf. anpassen */
+        width: 18px; /* Ggf. anpassen */
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+    /* Hover-Effekt */
+    .link-abteil ul li a:hover {
+        background-color: #ffffff; /* Heller Hintergrund */
+        color: #0a58ca;            /* Dunkelblaue Schrift */
+        border: 1px solid #0a58ca; /* Blauer Rand */
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Deutlicherer Hover-Schatten */
+    }
+    /* --- ENDE NEUES LAYOUT & STYLING --- */
+
+
+    /* Footer Styling */
+    footer {
+        text-align: center;
+        margin-top: 50px;
+        padding-top: 25px;
+        border-top: 1px solid #e9ecef;
+        font-size: 0.9em; /* Etwas kleiner */
+        color: #6c757d;
+    }
+
+    /* Dein Zitat im Footer */
+    footer .quote {
+         font-style: italic;
+         margin-bottom: 15px;
+         color: #888;
+         display: block; /* Sicherstellen, dass es ein Block ist */
+         max-width: 1600px; /* Begrenzen für Lesbarkeit */
+         margin-left: auto;
+         margin-right: auto;
+    }
+
+    /* Responsivitäts-Check */
+    @media (max-width: 992px) { /* Breiterer Breakpoint für 2 Spalten */
+         .container {
+             max-width: 900px;
+         }
+         .link-abteil {
+             min-width: calc(50% - 15px); /* Ca. 2 Spalten */
+             flex-basis: calc(50% - 15px);
+         }
+         nav {
+             gap: 20px;
+         }
+    }
+
+
+    @media (max-width: 768px) {
+         header h1 {
+             font-size: 2em;
+         }
+         .container {
+             max-width: 700px;
+             padding: 30px;
+         }
+         .link-abteil {
+             padding: 20px;
+         }
+         .link-abteil h2 {
+             font-size: 1.15em;
+         }
+          .link-abteil ul li a {
+              padding: 10px 12px;
+              font-size: 0.95em;
+         }
+    }
+
+    @media (max-width: 600px) {
+         /* Abteilungen untereinander */
+         nav {
+             flex-direction: column;
+             align-items: stretch; /* Füllen Breite des Containers */
+             gap: 20px;
+         }
+         /* Keine gleiche Breite mehr nötig, füllt Container */
+         .link-abteil {
+             flex: none;
+             width: auto; /* Breite automatisch an Container anpassen */
+             min-width: unset;
+             margin: 0; /* Keine extra Ränder */
+             /* Behält Padding, Hintergrund, Schatten */
+         }
+         .container {
+             margin: 20px; /* Mehr Abstand auf Mobilgeräten */
+             padding: 20px;
+         }
+          header h1 {
+              font-size: 1.8em;
+         }
+    }
+    </style>
+    </head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Willkommen auf der Lernplattform!</h1>
+        </header>
+
+        <p class="intro-text">Wähle dein Fachgebiet und starte deine Lernreise:</p>
+
+        <nav>
+            <div class="link-abteil semester-1">  <h2>Semester 1</h2> <ul>
+                    <li><a href="Themengebiet1.html"><i class="fa-solid fa-check"></i>Themengebiet 1</a></li>
+                    <li><a href="Themengebiet2.html"><i class="fa-solid fa-check"></i>Themengebiet 2</a></li>
+                    <li><a href="Themengebiet3.html"><i class="fa-solid fa-check"></i>Themengebiet 3</a></li>
+                    <li><a href="Themengebiet4.html"><i class="fa-solid fa-check"></i>Themengebiet 4</a></li>
+                    <li><a href="Themengebiet5.html"><i class="fa-solid fa-check"></i>Themengebiet 5</a></li>
+                    <li><a href="Themengebiet6.html"><i class="fa-solid fa-check"></i>Themengebiet 6</a></li>
+                    <li><a href="Themengebiet7.html"><i class="fa-solid fa-check"></i>Themengebiet 7</a></li>
+                </ul>
+            </div>
+
+            <div class="link-abteil kommunikationswoche"> <h2>Kommunikationswoche</h2> <ul>
+                    <li><a href="Kommunikationswoche.html"><i class="fa-solid fa-check"></i>Kommunikationswoche</a></li>
+                </ul>
+            </div>
+
+            <div class="link-abteil semester-2"> <h2>Semester 2</h2> <ul>
+                    <li><a href="ZE2 Grundlagen der Führung.html"><i class="fa-solid fa-check"></i>ZE2 Grundlagen der Führung</a></li>
+                    <li><a href="#"><i class="fa-solid fa-check"></i>ZE3 Transaktionale und transformationale Führung</a></li>
+                    <li><a href="#"><i class="fa-solid fa-check"></i>ZE4 Dynamisches Fünf Faktoren Modell der Führung</a></li>
+                    <li><a href="#"><i class="fa-solid fa-check"></i>ZE5 Rollen und Rollenkonflikte</a></li>
+                    <li><a href="ZE6 Grundlagen der Motivation.html"><i class="fa-solid fa-check"></i>ZE6 Grundlagen der Motivation</a></li>
+                    <li><a href="#"><i class="fa-solid fa-check"></i>ZE7 Motivtrias</a></li>
+                    <li><a href="#"><i class="fa-solid fa-check"></i>ZE8 Zielsetzungstheorie</a></li>
+                    <li><a href="#"><i class="fa-solid fa-check"></i>ZE9 Job Characteristics Modell</a></li>
+                    <li><a href="#"><i class="fa-solid fa-check"></i>ZE10 Partizipation in Organisationen</a></li>
+                    <li><a href="#"><i class="fa-solid fa-check"></i>ZE11 Grundlagen des Besprechungsmanagements</a></li>
+                    <li><a href="#"><i class="fa-solid fa-check"></i>ZE12 Meetinggestaltung</a></li>
+                    <li><a href="#"><i class="fa-solid fa-check"></i>ZE13 Meetingprozess</a></li>
+                    <li><a href="#"><i class="fa-solid fa-check"></i>ZE14 Virtuelle Meetings</a></li>
+                </ul>
+            </div>
+        </nav>
+		
+		<h3><center>⬇️ Ausrede zum Prokrastinieren ⬇️</center></h3>
+
+    <div id="fact-container">
+        Lade Fakt...
+    </div>
+
+    <script src="random-fact.js"></script> 
+
+        <footer>
+            <p class="quote">"Manchmal muss man loslassen, was einen belastet – auch wenn es der Studiengang ist."</p>
+            <p>&copy; <span id="current-year"></span> heaven scent. Alle Rechte vorbehalten.</p>
+            <p>Letztes Update der Seite: <span id="last-updated">Datum wird geladen...</span></p>
+        </footer>
+    </div>
+
+    <script>
+	// random-fact.js
+
+// 1. Liste der Fakten (als Array von Strings)
+const facts = [
+    "Prokrastination kann dem Gehirn Zeit geben, unbewusst an Problemen zu arbeiten (Inkubation)",
+"Eine bewusste Pause durch Aufschieben kann zu kreativeren Lösungen führen",
+"Prokrastination hilft manchmal dabei, unwichtige Aufgaben von selbst verschwinden zu lassen",
+"Gezielte 'Faulheit' kann Energie sparen, die für wirklich wichtige Dinge benötigt wird",
+"Aufschieben verhindert mitunter übereilte Handlungen und kostspielige Fehler",
+"Manche Menschen arbeiten durch aktive Prokrastination unter Druck fokussierter",
+"Ein Moment der 'Faulheit' kann Stress reduzieren und die mentale Regeneration fördern",
+"'Faulheit' kann dazu anspornen, den einfachsten und effizientesten Lösungsweg zu suchen",
+"Durch das Aufschieben einer Aufgabe erkennt man manchmal erst ihre wahre Priorität",
+"Geplante 'Faulheit' ist eine Form der Selbstfürsorge und beugt Burnout vor",
+"Prokrastination erlaubt manchmal, auf neue Informationen zu warten und Pläne anzupassen",
+"Bewusste Faulheit kann ein Weg sein, auf echte, intrinsische Motivation zu warten",
+"Das Aufschieben einer Aufgabe gibt oft Distanz für eine klarere Gesamtperspektive",
+"Prokrastination kann das Warten auf den richtigen mentalen Zustand (z.B. 'Flow') ermöglichen",
+"Gezielte Faulheit kann als Protest gegen eine Kultur der ständigen Überbeschäftigung dienen",
+"Faulheit bevorzugt manchmal instinktiv ressourcenschonende und simple Ansätze",
+"Aufschieben schafft Raum, um vor einer Entscheidung stärker auf die eigene Intuition zu hören",
+"Faulheit hilft, unnötige Arbeit zu vermeiden, die nur dem Anschein von Produktivität dient",
+"Prokrastination bei einer emotionalen Reaktion kann helfen, soziale Beziehungen zu schützen",
+"Phasen der Faulheit sind für die körperliche Regeneration und langfristige Gesundheit wichtig",
+"Aufschieben erlaubt längeres Beobachten einer Situation, was zu klügerem Handeln führen kann",
+"Faulheit fördert manchmal Geduld und die Fähigkeit, den richtigen Zeitpunkt abzuwarten",
+"Prokrastination kann helfen, überhöhte Perfektionsansprüche auf ein realistisches Maß zu senken",
+"Das Verschieben von Plänen lässt Raum für unerwartete, positive Gelegenheiten (Serendipität)",
+"Bewusste Faulheit ermöglicht es, den Moment zu genießen und nicht nur Zielen nachzujagen",
+"Prokrastination kann ein Signal sein, dass eine Aufgabe neu bewertet oder delegiert werden sollte",
+"Geplante Faulheit schützt vor der mentalen Erschöpfung durch ständige Selbstoptimierung",
+"Das Aufschieben von Antworten trainiert die Toleranz gegenüber Unsicherheit und offenen Fragen",
+"Faulheit respektiert das menschliche Grundbedürfnis nach Ruhe, Nichtstun und Kontemplation",
+"Prokrastination bei weniger wichtigen Dingen schafft mentale Kapazität für komplexe Herausforderungen",
+];
+
+// 2. Funktion zur Auswahl und Anzeige eines zufälligen Fakts
+function displayRandomFact() {
+    // Finde den HTML-Container, in dem der Fakt angezeigt werden soll
+    const factContainer = document.getElementById('fact-container');
+
+    // Überprüfe, ob das Element gefunden wurde
+    if (factContainer) {
+        // Wähle einen zufälligen Index aus dem Array
+        // Math.random() gibt eine Zahl zwischen 0 (inklusiv) und 1 (exklusiv) zurück
+        // Multipliziert mit der Länge des Arrays ergibt das eine Zahl zwischen 0 und facts.length-1
+        // Math.floor() rundet das Ergebnis auf die nächste ganze Zahl ab
+        const randomIndex = Math.floor(Math.random() * facts.length);
+
+        // Hole den Fakt an diesem zufälligen Index
+        const randomFact = facts[randomIndex];
+
+        // Setze den Textinhalt des Containers auf den ausgewählten Fakt
+        factContainer.textContent = randomFact; 
+        // Alternativ: factContainer.innerHTML = randomFact; (wenn der Fakt HTML enthalten würde)
+    } else {
+        console.error("Fehler: Container für Fakten nicht gefunden (ID: fact-container)");
+    }
+}
+
+// 3. Rufe die Funktion auf, wenn die Seite geladen ist
+// Wenn das Script am Ende des Body steht, ist das DOM normalerweise bereit.
+// Man kann auch window.onload oder DOMContentLoaded verwenden für mehr Sicherheit.
+displayRandomFact(); 
+
+// --- Optional: Auf Knopfdruck neuen Fakt laden ---
+// Dazu bräuchtest du einen Button im HTML: <button id="newFactBtn">Neuer Fakt</button>
+/*
+const newFactButton = document.getElementById('newFactBtn');
+if (newFactButton) {
+    newFactButton.addEventListener('click', displayRandomFact); // Ruft die Funktion bei Klick auf
+}
+*/
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+            const lastUpdatedSpan = document.getElementById('last-updated');
+            if (lastUpdatedSpan) {
+                const now = new Date();
+                const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+                lastUpdatedSpan.textContent = now.toLocaleDateString('de-DE', options) + ' Uhr';
+            }
+            console.log("Lernplattform Startseite geladen!");
+            // Hinweis: Der Event Listener funktioniert weiterhin, da er alle 'a' in 'nav ul li' findet.
+            const links = document.querySelectorAll('nav ul li a');
+            links.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    // Beispielaktion, wenn ein Link ohne echtes Ziel geklickt wird
+                    // if (this.getAttribute('href') === '#') {
+                    //    console.log(`Link geklickt: ${this.textContent.trim()}`);
+                    // }
+                    // Da die hrefs jetzt spezifischer sind, ist dieser Check ggf. nicht mehr nötig
+                    console.log(`Link geklickt: ${this.textContent.trim()}, Ziel: ${this.getAttribute('href')}`);
+                });
+            });
+        });
+    </script>
+    </body>
+</html>
