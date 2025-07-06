@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lernmodul: Motivation verstehen</title>
+    <style>
+        /* Grundlegende Stile (ähnlich wie zuvor) */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #fffaf0; /* Sehr heller Cremeton */
+            color: #444; /* Dunkleres Grau */
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 25px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ffca28, #ffa000); /* Gelb/Orange Gradient */
+            color: #4f3400; /* Dunkelbraun für Text */
+            padding: 25px 30px;
+            border-radius: 10px 10px 0 0;
+            margin: -30px -30px 35px -30px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: 600;
+        }
+
+        h2 {
+            color: #ffa000; /* Dunkleres Orange */
+            border-bottom: 3px solid #ffe082; /* Helles Gelb */
+            padding-bottom: 10px;
+            margin-top: 45px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #ffb300; /* Mittleres Orange/Gelb */
+            margin-top: 30px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+        h4 {
+           color: #bc5100; /* Dunkelorange für Unterüberschriften */
+           font-size: 1.15em;
+           margin-bottom: 8px;
+           font-weight: 600;
+        }
+
+        strong {
+            color: #ffa000;
+            font-weight: 700;
+        }
+         code { /* Hervorhebung von Begriffen */
+           background-color: #fff8e1;
+           padding: 2px 5px;
+           border-radius: 4px;
+           font-family: monospace;
+           color: #ff8f00;
+        }
+
+        /* Platzhalter für Grafiken */
+        .placeholder {
+            border: 2px dashed #ffd54f;
+            padding: 35px;
+            text-align: center;
+            margin: 30px 0;
+            background-color: #fffde7;
+            color: #8d6e63;
+            font-style: italic;
+            border-radius: 6px;
+        }
+
+        /* Visuelle Darstellungen */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .info-card {
+            background-color: #fffdf7; /* Sehr heller Hintergrund für Karten */
+            border: 1px solid #ffe082;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .info-card h4 { margin-top: 0; color: #ffb300; }
+        .info-card p, .info-card ul { font-size: 0.95em; margin: 0; color: #5f4339;}
+        .info-card ul { list-style: disc; padding-left: 20px; margin-top: 5px; }
+
+        /* Intrinsisch vs. Extrinsisch */
+        .motivation-comparison .info-card { border-left: 5px solid; }
+        .motivation-comparison .intrinsisch { border-left-color: #ffb300; }
+        .motivation-comparison .extrinsisch { border-left-color: #ffa000; }
+        .motivation-comparison .intrinsisch h4 { color: #f57f17; }
+        .motivation-comparison .extrinsisch h4 { color: #ff6f00; }
+
+        /* Maslow Pyramide (als Liste) */
+        .maslow-pyramid ol { list-style: none; border: 1px solid #ffe082; border-radius: 8px; padding: 0; margin: 20px 0; }
+        .maslow-pyramid li { padding: 15px 20px; border-bottom: 1px solid #ffe082; text-align: center; }
+        .maslow-pyramid li:last-child { border-bottom: none; }
+        .maslow-pyramid .level-5 { background-color: #fff8e1; border-top-left-radius: 8px; border-top-right-radius: 8px;} /* Oben */
+        .maslow-pyramid .level-4 { background-color: #fff9c4; }
+        .maslow-pyramid .level-3 { background-color: #fff59d; }
+        .maslow-pyramid .level-2 { background-color: #fff176; }
+        .maslow-pyramid .level-1 { background-color: #ffee58; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;} /* Unten */
+        .maslow-pyramid strong { font-size: 1.1em; color: #af4400; display: block; margin-bottom: 5px;}
+        .maslow-pyramid span { font-size: 0.9em; color: #7f3200; }
+
+        /* Herzberg Faktoren */
+        .herzberg-factors { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 20px 0;}
+        .factor-list h4 { border-bottom: 2px solid; padding-bottom: 8px; margin-bottom: 10px;}
+        .factor-list.hygiene h4 { color: #f57c00; border-color: #ffe0b2; } /* Orange für Hygiene */
+        .factor-list.motivatoren h4 { color: #388e3c; border-color: #c8e6c9; } /* Grün für Motivatoren */
+        .factor-list ul { list-style: none; padding: 0; }
+        .factor-list li { margin-bottom: 8px; padding-left: 20px; position: relative; font-size: 0.95em; }
+        .factor-list li::before { position: absolute; left: 0; top: 0; font-weight: bold; }
+        .factor-list.hygiene li::before { content: '💧'; } /* Symbol für Hygiene */
+        .factor-list.motivatoren li::before { content: '🔥'; } /* Symbol für Motivation */
+
+        /* VIE Theorie */
+        .vie-visual { text-align: center; background-color: #fff8e1; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #ffecb3;}
+        .vie-visual span { font-size: 1.5em; font-weight: bold; margin: 0 10px; color: #ffb300; }
+        .vie-element { display: inline-block; margin: 0 5px; font-weight: bold; color: #e65100;}
+
+        /* Schlüssel-Schloss Prinzip */
+        .schluessel-schloss { text-align: center; background-color: #fff8e1; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #ffecb3;}
+        .schluessel-schloss .icon { font-size: 2em; margin: 0 10px; }
+        .schluessel-schloss .plus { font-size: 1.5em; font-weight: bold; margin: 0 10px; color: #ffb300;}
+        .schluessel-schloss .equals { font-size: 1.5em; font-weight: bold; margin: 0 10px; color: #e65100;}
+
+
+        /* Quiz-Stile (allgemein, wie gehabt) */
+        .quiz-section { background-color: #fff8e1; padding: 25px; margin-top: 35px; border-radius: 8px; border: 1px solid #ffecb3; }
+        .quiz-section h3 { margin-top: 0; border-bottom: 1px solid #ffe082; padding-bottom: 10px; margin-bottom: 20px; color: #ffa000; }
+        .quiz-question { margin-bottom: 20px; padding: 15px; background-color: #fff; border-radius: 5px; border: 1px solid #eee; }
+        .quiz-question p { font-weight: bold; margin-bottom: 10px; }
+        .quiz-question label { display: block; margin-bottom: 8px; cursor: pointer; padding: 8px 12px; border-radius: 4px; transition: background-color 0.2s ease; border: 1px solid transparent; }
+        .quiz-question label:hover { background-color: #fffde7; }
+        .quiz-question input[type="radio"] { margin-right: 10px; vertical-align: middle; }
+        .quiz-submit { display: inline-block; padding: 12px 25px; font-size: 1em; color: #ffffff; background-color: #0d6efd; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; margin-top: 10px; }
+        .quiz-submit:hover { background-color: #0a58ca; }
+        .quiz-feedback { margin-top: 20px; padding: 15px; border-radius: 5px; font-weight: bold; display: none; border: 1px solid transparent; }
+        .quiz-feedback.correct { background-color: #d1e7dd; color: #0f5132; border-color: #badbcc; }
+        .quiz-feedback.incorrect { background-color: #f8d7da; color: #842029; border-color: #f5c2c7; }
+        .correct-answer { background-color: #d1e7dd !important; border: 1px solid #badbcc; border-left: 5px solid #0f5132 !important; padding-left: 8px !important; }
+        .incorrect-answer { background-color: #f8d7da !important; border: 1px solid #f5c2c7; border-left: 5px solid #842029 !important; padding-left: 8px !important; }
+        .user-selected { /* Optional */ }
+        .unanswered-question { border: 1px solid #842029 !important; }
+
+        /* Übungs-Sektionen */
+        .exercise-section { background-color: #f1f8e9; padding: 25px; margin-top: 35px; border-radius: 8px; border: 1px solid #dcedc8; } /* Hellgrün */
+        .exercise-section h3 { margin-top: 0; color: #558b2f; }
+        .exercise-section ul, .exercise-section ol { list-style: disc; margin-left: 20px; }
+
+        /* Checkliste & Zusammenfassung */
+        .summary-section, .checklist-section { background-color: #fff3e0; padding: 25px; margin-top: 35px; border-radius: 8px; border: 1px solid #ffe0b2; } /* Heller Orange-Ton */
+        .summary-section h2, .checklist-section h2 { margin-top: 0; color: #e65100; }
+        .checklist-section ul { list-style: none; padding-left: 0; }
+        .checklist-section li { margin-bottom: 15px; }
+        .checklist-section h4 { margin-bottom: 5px; color: #ef6c00; }
+        .checklist-section ul ul { list-style: disc; padding-left: 25px; margin-top: 5px; }
+        .checklist-section ul ul li { margin-bottom: 3px; font-size: 0.95em;}
+
+        /* Responsive Design Anpassungen */
+         @media (max-width: 768px) {
+             .herzberg-factors { grid-template-columns: 1fr; gap: 20px; } /* Untereinander */
+             .vie-visual { font-size: 0.9em;} /* Kleinere Schrift */
+             .vie-visual span { margin: 0 5px;}
+             .schluessel-schloss { font-size: 0.9em; }
+             .schluessel-schloss .icon { font-size: 1.8em; }
+         }
+        @media (max-width: 600px) {
+            .container { padding: 20px; margin: 15px auto; }
+            header { padding: 20px; margin: -20px -20px 25px -20px; }
+            header h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.25em; }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Lernmodul: Motivation verstehen</h1>
+        </header>
+
+        <main>
+            <section id="motivation-grundlagen">
+                <h2>1. Was ist Motivation? Definition und Arten</h2>
+
+                <h3>a) Definition Motivation</h3>
+                <p><strong>Motivation</strong> ist der psychologische Prozess, der die <strong>Richtung</strong> (Zielwahl), die <strong>Intensität</strong> (Anstrengung) und die <strong>Ausdauer</strong> (Hartnäckigkeit) menschlichen Verhaltens erklärt. Sie ist der "Motor" unseres Handelns.</p>
+
+                <h3>b) Intrinsische vs. Extrinsische Motivation</h3>
+                <div class="info-grid motivation-comparison">
+                    <div class="info-card intrinsisch">
+                        <h4>Intrinsische Motivation</h4>
+                        <ul>
+                            <li>Antrieb kommt <strong>von innen</strong> (Person selbst).</li>
+                            <li>Tätigkeit wird um ihrer selbst willen ausgeführt (Freude, Interesse, Werte).</li>
+                            <li>Belohnung liegt im Tun.</li>
+                            <li>Gefördert durch Autonomie, Kompetenzerleben, soziale Eingebundenheit (Selbstbestimmungstheorie).</li>
+                            <li>Beispiel: Hobby, Neugier, spannende Aufgabe.</li>
+                        </ul>
+                    </div>
+                    <div class="info-card extrinsisch">
+                        <h4>Extrinsische Motivation</h4>
+                         <ul>
+                            <li>Antrieb kommt <strong>von außen</strong> (Konsequenzen).</li>
+                            <li>Tätigkeit wird für Belohnung / zur Strafvermeidung ausgeführt.</li>
+                            <li>Belohnung liegt außerhalb des Tuns.</li>
+                            <li>Kann intrinsische Motivation untergraben (<code>Korrumpierungseffekt</code>).</li>
+                             <li>Beispiel: Arbeiten für Geld, Lernen für Noten.</li>
+                         </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="quiz-section">
+                 <h3>Interaktives Quiz: Definition & Arten</h3>
+                 <form id="mot-grund-quiz">
+                    <div class="quiz-question">
+                        <p>1. Welche drei Aspekte menschlichen Verhaltens erklärt Motivation laut Definition im PDF?</p>
+                        <label><input type="radio" name="mgq1" value="a"> a) Gefühl, Stimmung, Wahrnehmung</label>
+                        <label><input type="radio" name="mgq1" value="b"> b) Richtung, Intensität, Ausdauer</label>
+                        <label><input type="radio" name="mgq1" value="c"> c) Intelligenz, Kreativität, Gedächtnis</label>
+                        <label><input type="radio" name="mgq1" value="d"> d) Vergangenheit, Gegenwart, Zukunft</label>
+                    </div>
+                    <div class="quiz-question">
+                        <p>2. Eine Person lernt intensiv für eine Prüfung, weil sie das Thema unglaublich faszinierend findet. Worum handelt es sich primär?</p>
+                        <label><input type="radio" name="mgq2" value="a"> a) Extrinsische Motivation</label>
+                        <label><input type="radio" name="mgq2" value="b"> b) Intrinsische Motivation</label>
+                        <label><input type="radio" name="mgq2" value="c"> c) Demotivation</label>
+                        <label><input type="radio" name="mgq2" value="d"> d) Hygienefaktor</label>
+                    </div>
+                    <div class="quiz-question">
+                        <p>3. Ein Mitarbeiter erledigt eine unbeliebte Aufgabe nur, weil ihm eine Prämie versprochen wurde. Was ist das für eine Motivation?</p>
+                        <label><input type="radio" name="mgq3" value="a"> a) Intrinsische Motivation</label>
+                        <label><input type="radio" name="mgq3" value="b"> b) Extrinsische Motivation</label>
+                        <label><input type="radio" name="mgq3" value="c"> c) Soziale Motivation</label>
+                        <label><input type="radio" name="mgq3" value="d"> d) Leistungsmotivation</label>
+                    </div>
+                     <button type="submit" class="quiz-submit">Quiz auswerten</button>
+                     <div id="mot-grund-feedback" class="quiz-feedback"></div>
+                 </form>
+            </section>
+
+             <section class="exercise-section">
+                <h3>Übung zur Anwendung: Eigene Motivation reflektieren</h3>
+                <p>Denke an zwei deiner regelmäßigen Tätigkeiten (Studium, Hobby, Arbeit, Haushalt...):</p>
+                <ol>
+                    <li>Was motiviert dich jeweils dazu? Unterscheide <strong>intrinsische</strong> (Spaß, Sinn...) und <strong>extrinsische</strong> (Geld, Noten, Ärger vermeiden...) Aspekte.</li>
+                    <li>Wie wirkt sich die Art der Motivation auf dein Engagement & deine Zufriedenheit aus?</li>
+                </ol>
+            </section>
+
+
+            <section id="motivationstheorien">
+                <h2>2. Motivationstheorien: Erklärungsansätze</h2>
+                <p>Unterscheidung: <strong>Inhaltstheorien (Was motiviert?)</strong> vs. <strong>Prozesstheorien (Wie entsteht Motivation?)</strong>.</p>
+
+                <h3>a) Inhaltstheorien (Was motiviert?)</h3>
+
+                <h4>Bedürfnispyramide nach Maslow</h4>
+                <p>Hierarchische Anordnung von Bedürfnissen; untere müssen (weitgehend) erfüllt sein, bevor höhere motivieren.</p>
+                <div class="maslow-pyramid">
+                     <ol>
+                        <li class="level-5"><strong>Selbstverwirklichung</strong> <span>(Wachstumsmotiv)</span></li>
+                        <li class="level-4"><strong>Ich-Motive</strong> <span>(Anerkennung, Status)</span></li>
+                        <li class="level-3"><strong>Soziale Motive</strong> <span>(Zugehörigkeit, Liebe)</span></li>
+                        <li class="level-2"><strong>Sicherheitsmotive</strong> <span>(Schutz, Stabilität)</span></li>
+                        <li class="level-1"><strong>Physiologische Bedürfnisse</strong> <span>(Hunger, Durst)</span></li>
+                    </ol>
+                 </div>
+                <p><strong>Kritik:</strong> Strenge Hierarchie & Universalität empirisch kaum belegt, aber dennoch einflussreich.</p>
+                 <div class="placeholder">[ Platzhalter für eine grafische Pyramide ]</div>
+
+                 <h4>Zwei-Faktoren-Theorie nach Herzberg</h4>
+                 <p>Unterscheidet Faktoren im Arbeitskontext:</p>
+                 <div class="herzberg-factors">
+                     <div class="factor-list hygiene">
+                         <h4>Hygienefaktoren (Kontext)</h4>
+                         <p><strong>Fehlen → Unzufriedenheit</strong><br><strong>Vorhanden → Keine Unzufriedenheit</strong> (aber nicht unbedingt Zufriedenheit)</p>
+                         <ul>
+                             <li>Bezahlung, Status</li>
+                             <li>Arbeitsplatzsicherheit</li>
+                             <li>Beziehungen (Kollegen, Vorgesetzte)</li>
+                             <li>Arbeitsbedingungen</li>
+                             <li>Unternehmenspolitik</li>
+                         </ul>
+                     </div>
+                     <div class="factor-list motivatoren">
+                         <h4>Motivatoren (Inhalt)</h4>
+                          <p><strong>Fehlen → Nicht-Zufriedenheit</strong><br><strong>Vorhanden → Zufriedenheit & Motivation</strong></p>
+                         <ul>
+                             <li>Leistungserfolg</li>
+                             <li>Anerkennung</li>
+                             <li>Arbeitsinhalt (Herausforderung)</li>
+                             <li>Verantwortung</li>
+                             <li>Aufstieg, Wachstum</li>
+                         </ul>
+                     </div>
+                 </div>
+                  <p><strong>Kritik:</strong> Strikte Trennung & Methodik kritisiert, aber wichtig für Rolle des Arbeitsinhalts.</p>
+
+                 <h3>b) Prozesstheorien (Wie entsteht Motivation?)</h3>
+
+                 <h4>VIE-Theorie (Erwartungs-Valenz-Theorie) nach Vroom</h4>
+                 <p>Motivation als Ergebnis kognitiver Abwägung:</p>
+                 <div class="vie-visual">
+                     <span class="vie-element">Motivation</span> <span>=</span>
+                     <span class="vie-element">Erwartung (E)</span> <span>×</span>
+                     <span class="vie-element">Σ (Instrumentalität (I)</span> <span>×</span>
+                     <span class="vie-element">Valenz (V))</span>
+                 </div>
+                 <ul>
+                    <li><strong>Erwartung (E):</strong> "Schaffe ich die Leistung durch Anstrengung?"</li>
+                    <li><strong>Instrumentalität (I):</strong> "Führt die Leistung zur Folge/Belohnung?"</li>
+                    <li><strong>Valenz (V):</strong> "Wie wichtig ist mir die Folge/Belohnung?"</li>
+                 </ul>
+                 <p>Ist einer der Faktoren E, I oder V null/negativ, ist die Motivation gering.</p>
+            </section>
+
+            <section class="quiz-section">
+                 <h3>Interaktives Quiz: Motivationstheorien</h3>
+                 <form id="mot-theo-quiz">
+                    <div class="quiz-question">
+                        <p>1. Welche Theorie unterscheidet zwischen Hygienefaktoren und Motivatoren?</p>
+                        <label><input type="radio" name="mtq1" value="a"> a) Bedürfnispyramide (Maslow)</label>
+                        <label><input type="radio" name="mtq1" value="b"> b) Zwei-Faktoren-Theorie (Herzberg)</label>
+                        <label><input type="radio" name="mtq1" value="c"> c) VIE-Theorie (Vroom)</label>
+                        <label><input type="radio" name="mtq1" value="d"> d) Selbstbestimmungstheorie (Deci & Ryan)</label>
+                    </div>
+                    <div class="quiz-question">
+                        <p>2. Was beschreibt die "Instrumentalität" in der VIE-Theorie?</p>
+                        <label><input type="radio" name="mtq2" value="a"> a) Der Wert des Ziels.</label>
+                        <label><input type="radio" name="mtq2" value="b"> b) Die Erwartung, das Handlungsergebnis durch Anstrengung zu erreichen.</label>
+                        <label><input type="radio" name="mtq2" value="c"> c) Die Erwartung, dass das Handlungsergebnis zu bestimmten Folgen führt.</label>
+                        <label><input type="radio" name="mtq2" value="d"> d) Die Dauer der Handlung.</label>
+                    </div>
+                     <div class="quiz-question">
+                        <p>3. Auf welcher Stufe der Maslowschen Bedürfnispyramide steht das Bedürfnis nach Anerkennung und Status?</p>
+                        <label><input type="radio" name="mtq3" value="a"> a) Physiologische Bedürfnisse</label>
+                        <label><input type="radio" name="mtq3" value="b"> b) Sicherheitsmotive</label>
+                        <label><input type="radio" name="mtq3" value="c"> c) Soziale Motive</label>
+                        <label><input type="radio" name="mtq3" value="d"> d) Ich-Motive</label>
+                    </div>
+                     <button type="submit" class="quiz-submit">Quiz auswerten</button>
+                     <div id="mot-theo-feedback" class="quiz-feedback"></div>
+                 </form>
+            </section>
+
+             <section class="exercise-section">
+                 <h3>Übung zur Anwendung: Motivation analysieren (VIE-Theorie)</h3>
+                 <p>Denke an eine Situation (Job, Studium, Sport...), in der du (oder jemand) motiviert/demotiviert warst:</p>
+                 <ol>
+                     <li><strong>Valenz:</strong> Wie wichtig/attraktiv waren die Folgen?</li>
+                     <li><strong>Instrumentalität:</strong> Glaubtest du, dass die Leistung zur Folge führt?</li>
+                     <li><strong>Erwartung:</strong> Glaubtest du, die Leistung durch Anstrengung schaffen zu können?</li>
+                 </ol>
+                 <p>Wie beeinflusste das Zusammenspiel die Motivation? Wo hätte man ansetzen können?</p>
+            </section>
+
+
+             <section id="motive-anreize">
+                <h2>3. Motive und Anreize: Das Zusammenspiel</h2>
+
+                <h3>a) Motiv</h3>
+                <p>Ein <strong>Motiv</strong> ist eine zeitlich überdauernde <code>Wertungsdisposition</code> einer Person – eine stabile Neigung, bestimmte Ziele/Zustände generell anzustreben (z.B. Leistungs-, Macht-, Anschlussmotiv). Motive sind Teil der Persönlichkeit (Traits).</p>
+
+                <h3>b) Anreiz</h3>
+                <p>Ein <strong>Anreiz</strong> ist ein Merkmal der <code>Situation</code>, das signalisiert, dass ein Motiv befriedigt werden kann (positiv oder negativ). Anreize regen Motive an.</p>
+
+                <h3>c) Zusammenspiel (Schlüssel-Schloss-Prinzip)</h3>
+                <p>Motivation entsteht erst, wenn ein passender Anreiz auf ein entsprechendes Motiv trifft:</p>
+                 <div class="schluessel-schloss">
+                     <span class="icon">🔑</span> <span class="element">Anreiz (Situation)</span>
+                     <span class="plus">+</span>
+                     <span class="icon">🔒</span> <span class="element">Motiv (Person)</span>
+                     <span class="equals">➔</span>
+                     <span class="icon">💡</span> <span class="element">Motivation</span>
+                 </div>
+                <p>Führung kann Motivation fördern, indem sie Anreize schafft, die zu den Motiven der Mitarbeiter*innen passen (<code>Person-Umwelt-Fit</code>).</p>
+                 <div class="placeholder">[ Platzhalter für Beispiele zum Schlüssel-Schloss-Prinzip ]</div>
+            </section>
+
+            <section class="quiz-section">
+                 <h3>Interaktives Quiz: Motive und Anreize</h3>
+                 <form id="mot-anreiz-quiz">
+                    <div class="quiz-question">
+                        <p>1. Was ist ein Motiv im Sinne der Motivationspsychologie?</p>
+                        <label><input type="radio" name="maq1" value="a"> a) Ein kurzfristiges Ziel.</label>
+                        <label><input type="radio" name="maq1" value="b"> b) Eine stabile Neigung, bestimmte Ziele oder Zustände anzustreben.</label>
+                        <label><input type="radio" name="maq1" value="c"> c) Ein Merkmal der Situation.</label>
+                        <label><input type="radio" name="maq1" value="d"> d) Die Motivation selbst.</label>
+                    </div>
+                    <div class="quiz-question">
+                        <p>2. Was ist ein Anreiz?</p>
+                        <label><input type="radio" name="maq2" value="a"> a) Eine Persönlichkeitseigenschaft.</label>
+                        <label><input type="radio" name="maq2" value="b"> b) Ein Merkmal der Situation, das ein Motiv anregen kann.</label>
+                        <label><input type="radio" name="maq2" value="c"> c) Immer eine finanzielle Belohnung.</label>
+                        <label><input type="radio" name="maq2" value="d"> d) Das Verhalten einer Person.</label>
+                    </div>
+                    <div class="quiz-question">
+                        <p>3. Das "Schlüssel-Schloss-Prinzip" besagt, dass Motivation entsteht, wenn...?</p>
+                        <label><input type="radio" name="maq3" value="a"> a) Nur ein starkes Motiv vorhanden ist.</label>
+                        <label><input type="radio" name="maq3" value="b"> b) Nur ein starker Anreiz vorhanden ist.</label>
+                        <label><input type="radio" name="maq3" value="c"> c) Ein passender Anreiz auf ein entsprechendes Motiv trifft.</label>
+                        <label><input type="radio" name="maq3" value="d"> d) Die Person ausgeschlafen ist.</label>
+                    </div>
+                     <button type="submit" class="quiz-submit">Quiz auswerten</button>
+                     <div id="mot-anreiz-feedback" class="quiz-feedback"></div>
+                 </form>
+            </section>
+
+             <section class="exercise-section">
+                 <h3>Übung zur Anwendung: Anreize schaffen</h3>
+                 <p>Du möchtest eine Person mit starkem <strong>Anschlussmotiv</strong> (Wert auf gute Beziehungen/Teamarbeit) für ein freiwilliges Projekt motivieren.</p>
+                 <ol>
+                     <li>Welche <strong>Anreize</strong> könntest du schaffen/hervorheben (Teamarbeit, neue Leute, gemeinsamer Erfolg...)?</li>
+                     <li>Welche Anreize wären vermutlich <strong>weniger wirksam</strong> (individueller Wettbewerb...)?</li>
+                 </ol>
+            </section>
+
+
+             <section class="checklist-section">
+                <h2>Checkliste: Was du wissen solltest</h2>
+                 <ul>
+                     <li><strong>Motivation:</strong> Definition (Richtung, Intensität, Ausdauer), Intrinsisch vs. Extrinsisch.</li>
+                     <li><strong>Motivationstheorien:</strong> Inhalt (Maslow, Herzberg) vs. Prozess (VIE); Kernideen verstehen.</li>
+                     <li><strong>Motive & Anreize:</strong> Definitionen, Schlüssel-Schloss-Prinzip.</li>
+                 </ul>
+            </section>
+
+             <section class="summary-section">
+                <h2>Zusammenfassung der Themen</h2>
+                <p><strong>Motivation</strong> erklärt Richtung, Intensität und Ausdauer von Verhalten. <strong>Intrinsische</strong> Motivation kommt von innen (Spaß, Interesse), <strong>extrinsische</strong> von außen (Belohnung/Strafe). Inhaltstheorien (<strong>Maslow</strong>, <strong>Herzberg</strong>) fragen "Was motiviert?", Prozesstheorien (<strong>VIE-Theorie</strong>) fragen "Wie entsteht Motivation?". Nach der VIE-Theorie hängt Motivation von Erwartung, Instrumentalität und Valenz ab. Motivation wird aktiviert, wenn ein situativer <strong>Anreiz</strong> auf ein persönliches <strong>Motiv</strong> trifft (<strong>Schlüssel-Schloss-Prinzip</strong>).</p>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // === Wiederverwendbare Funktion zur Quiz-Auswertung (wie gehabt) ===
+        function evaluateQuiz(formId, correctAnswers, feedbackElementId) {
+            const quizForm = document.getElementById(formId);
+            const feedbackElement = document.getElementById(feedbackElementId);
+            if (!quizForm || !feedbackElement) { console.error("Quiz-Formular oder Feedback-Element nicht gefunden:", formId, feedbackElementId); return; }
+            if (quizForm.dataset.listenerAttached) { return; } // Verhindert doppelte Listener
+            quizForm.dataset.listenerAttached = 'true';
+            quizForm.addEventListener('submit', function(event) {
+                event.preventDefault(); let score = 0; const totalQuestions = Object.keys(correctAnswers).length; const questions = quizForm.querySelectorAll('.quiz-question'); let allAnswered = true;
+                questions.forEach((question) => {
+                    const radioInputs = question.querySelectorAll('input[type="radio"]'); const questionName = radioInputs.length > 0 ? radioInputs[0].name : null; const labels = question.querySelectorAll('label');
+                    labels.forEach(label => { label.classList.remove('correct-answer', 'incorrect-answer', 'user-selected'); label.style.borderLeftWidth = ''; label.style.borderLeftColor = ''; label.style.paddingLeft = ''; label.style.border = ''; });
+                    question.classList.remove('unanswered-question'); if (!questionName) return; const selectedInput = question.querySelector(`input[name="${questionName}"]:checked`);
+                    if (selectedInput) {
+                        const userAnswer = selectedInput.value; const correctAnswer = correctAnswers[questionName]; const selectedLabel = selectedInput.closest('label');
+                        if(selectedLabel) {
+                            selectedLabel.classList.add('user-selected');
+                            if (userAnswer === correctAnswer) { score++; selectedLabel.classList.add('correct-answer'); } else {
+                                selectedLabel.classList.add('incorrect-answer'); const correctInput = question.querySelector(`input[value="${correctAnswer}"]`);
+                                if (correctInput) { const correctLabel = correctInput.closest('label'); if (correctLabel) correctLabel.classList.add('correct-answer'); } } }
+                    } else { allAnswered = false; question.classList.add('unanswered-question'); } });
+                feedbackElement.style.display = 'block'; let feedbackMessage = "";
+                if (!allAnswered) { feedbackMessage = `Bitte beantworte alle Fragen. Deine aktuelle Punktzahl: ${score} von ${totalQuestions}.`; feedbackElement.className = 'quiz-feedback incorrect'; } else {
+                    feedbackMessage = `Dein Ergebnis: ${score} von ${totalQuestions} richtig. `;
+                    if (score === totalQuestions) { feedbackMessage += "Spitze!"; feedbackElement.className = 'quiz-feedback correct'; } else if (score >= Math.ceil(totalQuestions / 2)) { feedbackMessage += "Gut gemacht! Schau dir die markierten Antworten nochmal an."; feedbackElement.className = 'quiz-feedback incorrect'; } else { feedbackMessage += "Das war noch nicht ganz richtig. Wiederhole die Inhalte und versuche es erneut."; feedbackElement.className = 'quiz-feedback incorrect'; } }
+                feedbackElement.textContent = feedbackMessage; feedbackElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); }); }
+
+        // === Definitionen der korrekten Antworten ===
+        const correctAnswersMotGrund = { mgq1: 'b', mgq2: 'b', mgq3: 'b' };
+        const correctAnswersMotTheo = { mtq1: 'b', mtq2: 'c', mtq3: 'd' };
+        const correctAnswersMotAnreiz = { maq1: 'b', maq2: 'b', maq3: 'c' };
+
+        // === Event Listener für jedes Quiz hinzufügen ===
+        document.addEventListener('DOMContentLoaded', () => {
+             if (!document.body.dataset.listenersAdded) { // Verhindert doppelte Listener
+                 evaluateQuiz('mot-grund-quiz', correctAnswersMotGrund, 'mot-grund-feedback');
+                 evaluateQuiz('mot-theo-quiz', correctAnswersMotTheo, 'mot-theo-feedback');
+                 evaluateQuiz('mot-anreiz-quiz', correctAnswersMotAnreiz, 'mot-anreiz-feedback');
+                 document.body.dataset.listenersAdded = 'true';
+             }
+        });
+    </script>
+
+</body>
+</html>
